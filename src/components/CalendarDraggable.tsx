@@ -63,8 +63,8 @@ function _CalendarDraggable<T extends ICalendarEventBase>({
       onPanResponderMove: (_e, gestureState) => {
         setOpacity(0.25)
         const change = getChangedInformation(gestureState)
-        if (previousChangeKey.current === `${change.day}-${change.hour}-${event}`) return
-        previousChangeKey.current = `${change.day}-${change.hour}-${event}`
+        if (previousChangeKey.current === `${change.day}-${change.hour}-${event.title}`) return
+        previousChangeKey.current = `${change.day}-${change.hour}-${event.title}`
         moveCallback(change)
       },
       onPanResponderRelease: (_e, gestureState) => {
