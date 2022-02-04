@@ -87,7 +87,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
   calendarCellStyle,
   ampm,
   showTime,
-  scrollOffsetMinutes: _scrollOffsetMinutes,
+  scrollOffsetMinutes,
   onSwipeHorizontal,
   hideNowIndicator,
   overlapOffset,
@@ -116,8 +116,6 @@ function _CalendarBody<T extends ICalendarEventBase>({
       start.getHours() >= minHour && end.getHours() <= maxHour,
   )
 
-  const scrollOffsetMinutes = minHour ? minHour * 2 * 60 : _scrollOffsetMinutes
-
   React.useEffect(() => {
     if (scrollView.current && scrollOffsetMinutes && Platform.OS !== 'ios') {
       // We add delay here to work correct on React Native
@@ -126,8 +124,8 @@ function _CalendarBody<T extends ICalendarEventBase>({
         () => {
           if (scrollView && scrollView.current) {
             scrollView.current.scrollTo({
-              y: (cellHeight * scrollOffsetMinutes) / 60,
-              animated: false,
+              y: (cellHeight * 2 * scrollOffsetMinutes) / 60,
+              animated: true,
             })
           }
         },
