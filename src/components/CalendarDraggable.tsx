@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Animated, PanResponder, PanResponderGestureState } from 'react-native'
 
 import {
@@ -37,8 +37,6 @@ function _CalendarDraggable<T extends ICalendarEventBase>({
 
   const { precision, squareUnits } = calculatePrecision(dragPrecision)
 
-  const [opacity, setOpacity] = useState<number>(1)
-
   const previousChangeKey = useRef<string>(`0-0-${event.title}`)
 
   const getChangedInformation = (
@@ -61,14 +59,12 @@ function _CalendarDraggable<T extends ICalendarEventBase>({
       },
       onMoveShouldSetPanResponder: () => true,
       onPanResponderMove: (_e, gestureState) => {
-        setOpacity(0.25)
         const change = getChangedInformation(gestureState)
         if (previousChangeKey.current === `${change.day}-${change.hour}-${event.title}`) return
         previousChangeKey.current = `${change.day}-${change.hour}-${event.title}`
         moveCallback(change)
       },
       onPanResponderRelease: (_e, gestureState) => {
-        setOpacity(1)
         const change = getChangedInformation(gestureState)
         moveCallback(change)
         dragEndCallback(change)
@@ -82,7 +78,7 @@ function _CalendarDraggable<T extends ICalendarEventBase>({
       style={[
         (touchableOpacityProps && touchableOpacityProps?.style) || customEventStyles,
         {
-          opacity: event?.moving ? 0.25 : opacity,
+          opacity: event?.moving ? 0.25 : 1,
         },
       ]}
       {...panResponder.panHandlers}
