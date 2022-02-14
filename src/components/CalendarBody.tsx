@@ -112,8 +112,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
 
   var events = movingEvent && isMoving ? [..._events, movingEvent] : _events
   events = events.filter(
-    ({ start, end }: { start: Date; end: Date }) =>
-      start.getHours() >= minHour && end.getHours() <= maxHour,
+    ({ start }: { start: Date }) => start.getHours() >= minHour && start.getHours() <= maxHour,
   )
 
   React.useEffect(() => {

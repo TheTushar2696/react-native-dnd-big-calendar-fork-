@@ -1,6 +1,6 @@
 {
   "name": "react-native-dnd-big-calendar",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "main": "build/index.js",
   "jsnext:main": "build/index.es.js",
   "module": "build/index.es.js",
