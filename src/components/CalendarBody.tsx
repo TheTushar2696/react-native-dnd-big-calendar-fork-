@@ -188,7 +188,7 @@ function _CalendarBody<T extends ICalendarEventBase>({
       const minScrollOffset = cellHeight * minHour * 2
       if (e.nativeEvent.contentOffset.y > maxScrollOffset) {
         scrollView?.current?.scrollTo({
-          y: maxScrollOffset,
+          y: maxScrollOffset + 20,
           animated: false,
         })
       } else if (e.nativeEvent.contentOffset.y < minScrollOffset) {
