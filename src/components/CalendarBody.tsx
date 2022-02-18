@@ -249,7 +249,12 @@ function _CalendarBody<T extends ICalendarEventBase>({
             <View
               style={[
                 styles.nowIndicator,
-                { backgroundColor: theme.palette.nowIndicator },
+                {
+                  borderRadius: 1,
+                  borderWidth: 1,
+                  borderColor: theme.palette.nowIndicator,
+                  borderStyle: 'dashed',
+                },
                 { top: `${getRelativeTopInDay(now)}%` },
               ]}
             />
