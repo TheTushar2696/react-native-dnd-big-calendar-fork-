@@ -184,11 +184,11 @@ function _CalendarBody<T extends ICalendarEventBase>({
 
   const onScroll = React.useCallback(
     (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-      const maxScrollOffset = cellHeight * (maxHour - minHour + 1) * 2
+      const maxScrollOffset = cellHeight * (maxHour - minHour + 1) * 2 + 20
       const minScrollOffset = cellHeight * minHour * 2
       if (e.nativeEvent.contentOffset.y > maxScrollOffset) {
         scrollView?.current?.scrollTo({
-          y: maxScrollOffset + 20,
+          y: maxScrollOffset,
           animated: false,
         })
       } else if (e.nativeEvent.contentOffset.y < minScrollOffset) {
