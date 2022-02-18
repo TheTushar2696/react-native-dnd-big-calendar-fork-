@@ -223,6 +223,10 @@ function _CalendarBody<T extends ICalendarEventBase>({
         {...(Platform.OS !== 'web' ? (disableDrag ? panResponder.panHandlers : {}) : {})}
         showsVerticalScrollIndicator={false}
         nestedScrollEnabled={!isMoving}
+        onTouchEnd={() => {
+          setIsMoving(false)
+          setMovingEvent(undefined)
+        }}
         scrollEnabled={!isMoving}
         alwaysBounceVertical={false}
         bounces={false}
