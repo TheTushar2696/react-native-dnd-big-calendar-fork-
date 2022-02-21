@@ -148,9 +148,9 @@ function _CalendarBody<T extends ICalendarEventBase>({
     layoutProps.current = { x, y, width, height }
   }
 
-  const _renderMappedEvent = (event: any) => (
+  const _renderMappedEvent = (event: any, index: number) => (
     <CalendarEvent
-      key={`${event?.moving}${event.start}${event.title}${event.end}`}
+      key={`${index}${event?.moving}${event.start}${event.title}${event.end}`}
       event={event}
       cellHeight={cellHeight}
       disableDrag={disableDrag}
